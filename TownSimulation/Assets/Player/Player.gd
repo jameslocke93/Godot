@@ -2,12 +2,6 @@ extends Node2D
 
 
 onready var movementGrid = $MovementGrid
-onready var buildButton = $MovementGrid/BuildButton
-
-
-func _ready():
-	buildButton.rect_position = Vector2(700, 600)
-	buildButton.visible = false
 
 
 func _physics_process(delta):
@@ -21,7 +15,7 @@ func check_world_tile(destination):
 	var world = get_tree().current_scene
 	var world_map = world.find_node("Map")
 	if world_map.get_tile(destination) >= 0:
-		buildButton.visible = true
+		world.add_button()
 		return true
 	return false
 	
