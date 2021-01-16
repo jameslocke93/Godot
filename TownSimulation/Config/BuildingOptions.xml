@@ -1,0 +1,44 @@
+<buildingOptions>
+	<buildOption name="building_one" id="0">
+		<cost>
+			<food>10</food>
+			<wood>10</wood>
+			<gold>5</gold>
+		</cost>
+		<upkeep>
+			<food>0</food>
+			<wood>0</wood>
+			<gold>1</gold>
+		</upkeep>
+		<production>
+			<food>2</food>
+			<wood>2</wood>
+			<gold>2</gold>
+		</production>
+		<population>
+			<value>0</value>
+		</population>
+		<icon>res://Assets/GUI/bombs_icon.png</icon>
+	</buildOption>
+	<buildOption name="building_two" id="1">
+		<cost>
+			<food>20</food>
+			<wood>20</wood>
+			<gold>10</gold>
+		</cost>
+		<upkeep>
+			<food>0</food>
+			<wood>0</wood>
+			<gold>2</gold>
+		</upkeep>
+		<production>
+			<food>4</food>
+			<wood>4</wood>
+			<gold>4</gold>
+		</production>
+		<population>
+			<value>0</value>
+		</population>
+		<icon>res://Assets/GUI/emeralds_icon.png</icon>
+	</buildOption>
+</buildingOptions>

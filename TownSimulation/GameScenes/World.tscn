@@ -7,10 +7,11 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
-iExpPopulation = 100
-iExpFood = 12
-iExpWood = 13
-iExpGold = 15
+nExpPopulation = 100
+nExpFood = 10
+nExpWood = 10
+nExpGold = 10
+nTimeStep = 5
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
 

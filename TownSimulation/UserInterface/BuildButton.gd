@@ -1,5 +1,8 @@
 extends Control
 
 
+onready var world = self.get_parent()
+
+
 func _on_Button_pressed():
-	print("Hello")
+	world.iPopulation += 1

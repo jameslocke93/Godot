@@ -1,22 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=2]
 
-[ext_resource path="res://UserInterface/BuildButton.gd" type="Script" id=1]
-
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 3.0
-margin_bottom = 3.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="."]
-margin_right = 144.0
-margin_bottom = 53.0
+[node name="Button" type="Button"]
+margin_right = 100.0
+margin_bottom = 50.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Build"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

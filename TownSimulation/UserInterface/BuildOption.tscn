@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UserInterface/BuildOption.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GUI/bombs_icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GUI/label_HP_bg.png" type="Texture" id=3]
+
+[node name="BuildOption" type="MarginContainer"]
+margin_right = 200.0
+margin_bottom = 80.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 200.0
+margin_bottom = 80.0
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="Bars" type="HBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceCost" type="VBoxContainer" parent="Bars"]
+margin_right = 116.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+
+[node name="Gold" type="Label" parent="Bars/ResourceCost"]
+margin_right = 116.0
+margin_bottom = 24.0
+size_flags_vertical = 3
+text = "Gold: 10"
+align = 1
+valign = 1
+
+[node name="Wood" type="Label" parent="Bars/ResourceCost"]
+margin_top = 28.0
+margin_right = 116.0
+margin_bottom = 52.0
+size_flags_vertical = 3
+text = "Wood: 10"
+align = 1
+valign = 1
+
+[node name="Food" type="Label" parent="Bars/ResourceCost"]
+margin_top = 56.0
+margin_right = 116.0
+margin_bottom = 80.0
+size_flags_vertical = 3
+text = "Food: 5"
+align = 1
+valign = 1
+
+[node name="Icon" type="TextureRect" parent="Bars"]
+margin_left = 120.0
+margin_right = 200.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
