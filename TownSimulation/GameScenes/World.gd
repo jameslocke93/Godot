@@ -9,7 +9,7 @@ onready var buildButton = BuildButton.instance()
 onready var buildInterface = BuildInterface.instance()
 
 onready var iBuildingHUD = $BuildingHUD
-onready var iMap = $Map
+onready var iBuildingLayer = $Map/BuildingLayer
 onready var iPlayer = $Player
 
 onready var start_time = OS.get_ticks_msec()
@@ -76,8 +76,15 @@ func town_production():
 
 
 func add_button():
-	add_child(buildButton)
-	buildButton.connect("pressed", self, "_on_build_pressed")
+	# Finding if build button exists as find_node doesn't seem to be working as intended
+	var button_exists = false
+	for child in get_children():
+		if child.get_name() == "BuildButton":
+			button_exists = true
+
+	if !button_exists:
+		add_child(buildButton)
+		buildButton.connect("pressed", self, "_on_build_pressed")
 
 
 func _on_build_pressed():
@@ -90,26 +97,22 @@ func _on_build_pressed():
 
 
 func _on_option_chosen(cost, production, upkeep, tile_type):
-	var food_cost = cost[0]
-	var wood_cost = cost[1]
-	var gold_cost = cost[2]
-	# var tile_type = cost[3] # Once tile_type is implemented
-	
-	var player_pos = iPlayer.get_grid_position()
-	
-	# Subtract resources, place tile, remove menu
-	self.iFood -= food_cost
-	self.iWood -= wood_cost
-	self.iGold -= gold_cost
-	
-	# Add new tile data to town building array
-	aTownBuildingsProduction.append(production)
-	aTownBuildingsUpkeep.append(upkeep)
-	
-	# Need to set set cell to returned tile type
-	iMap.base_map.set_cell(player_pos.x, player_pos.y, tile_type)
-	
-	buildMenu.queue_free()
+	if iFood >= cost[0] and iWood >= cost[1] and iGold >= cost[2]:
+		var player_pos = iPlayer.get_grid_position()
+		
+		# Subtract resources, place tile, remove menu
+		self.iFood -= cost[0]
+		self.iWood -= cost[1]
+		self.iGold -= cost[2]
+		
+		# Add new tile data to town building array
+		aTownBuildingsProduction.append(production)
+		aTownBuildingsUpkeep.append(upkeep)
+		
+		# Need to set set cell to returned tile type
+		iBuildingLayer.set_cell(player_pos.x, player_pos.y, tile_type)
+		
+		buildMenu.queue_free()
 
 
 func set_pop(value):

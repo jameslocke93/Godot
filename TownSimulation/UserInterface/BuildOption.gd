@@ -38,7 +38,7 @@ func init(build):
 	self.wood_upkeep = build["upkeep"]["wood"]
 	self.gold_upkeep = build["upkeep"]["gold"]
 	
-	self.tile_type = build["ID"] + 2
+	self.tile_type = build["ID"]
 	self.build_icon.texture = load(build["icon"])
 	connect("mouse_entered", self, "_on_BuildOption_mouse_entered")
 	connect("mouse_exited", self, "_on_BuildOption_mouse_exited")

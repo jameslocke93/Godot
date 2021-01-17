@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="Button" type="Button"]
+[node name="BuildButton" type="Button"]
 margin_right = 100.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
@@ -9,4 +9,3 @@ text = "Build"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="." to="." method="_on_Button_pressed"]
