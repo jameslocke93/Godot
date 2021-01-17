@@ -4,17 +4,21 @@ extends VBoxContainer
 var BuildOption = preload("res://UserInterface/BuildOption.tscn")
 
 # When setting tile_type, they must correspond to a tile in TileSet in Map
-var building_from_xml = []
+var building_from_xml
+var modifier_from_xml
 
 func _ready():
-	generate_build_options("res://Config/BuildingOptions.xml")
+	# Location has interaction with resource multipliers
+	building_from_xml = generate_config_options("res://Config/BuildingOptions.xml", "buildingOptions", "buildOption")
+	modifier_from_xml = generate_config_options("res://Config/TileModifier.xml", "tileModifiers", "modifier")
+	var tile_type = get_tree().current_scene.get_player_tile()
 	for build in building_from_xml:
 		var build_option =  BuildOption.instance()
-		build_option.init(build)
+		build_option.init(build, modifier_from_xml[tile_type])
 		add_child(build_option)
 
 
-func generate_build_options(file_path):
+func generate_config_options(file_path, top_layer, lower_layer):
 	var config_string = read_file(file_path)
 	var regex = RegEx.new()
 	var tmp_string = ""
@@ -22,7 +26,7 @@ func generate_build_options(file_path):
 	var tmp_build_options = []
 	
 	# Pulls the data in the building options tag
-	regex.compile("<buildingOptions>")
+	regex.compile("<" + top_layer + ">")
 	for line in config_string.split("\n"):
 		if regex.search(line):
 			inside_building_options = false
@@ -30,10 +34,10 @@ func generate_build_options(file_path):
 			tmp_string = tmp_string + line
 		if regex.search(line):
 			inside_building_options = true
-			regex.compile("</buildingOptions>")
+			regex.compile("</" + top_layer + ">")
 	
 	# Takes the string that contains only the single build option
-	regex.compile("(?<=<buildOption ).*?(?=<\/buildOption>)")
+	regex.compile("(?<=<" + lower_layer + " ).*?(?=<\/" + lower_layer + ">)")
 	var results = regex.search_all(tmp_string)
 	if results:
 		for result in results:
@@ -57,9 +61,10 @@ func generate_build_options(file_path):
 						buildingData[attribute][resource] = int(resource_result.get_string())
 			regex.compile("(?<=<icon>).*?(?=<\/icon>)")
 			buildingData["icon"] = regex.search(result.get_string()).get_string()
-			building_from_xml.append(buildingData)
-	for tmp in building_from_xml:
+			tmp_build_options.append(buildingData)
+	for tmp in tmp_build_options:
 		print(tmp)
+	return tmp_build_options
 
 
 func read_file(file_path):

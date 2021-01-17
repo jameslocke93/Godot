@@ -1,0 +1,44 @@
+<tileModifiers>
+	<modifier name="tile_one" id="0">
+		<cost>
+			<food>1</food>
+			<wood>1</wood>
+			<gold>1</gold>
+		</cost>
+		<upkeep>
+			<food>1</food>
+			<wood>1</wood>
+			<gold>2</gold>
+		</upkeep>
+		<production>
+			<food>1</food>
+			<wood>1</wood>
+			<gold>1</gold>
+		</production>
+		<population>
+			<value>1</value>
+		</population>
+		<icon></icon>
+	</modifier>
+	<modifier name="tile_two" id="1">
+		<cost>
+			<food>1</food>
+			<wood>1</wood>
+			<gold>1</gold>
+		</cost>
+		<upkeep>
+			<food>1</food>
+			<wood>1</wood>
+			<gold>1</gold>
+		</upkeep>
+		<production>
+			<food>2</food>
+			<wood>2</wood>
+			<gold>1</gold>
+		</production>
+		<population>
+			<value>1</value>
+		</population>
+		<icon></icon>
+	</modifier>
+</tileModifiers>

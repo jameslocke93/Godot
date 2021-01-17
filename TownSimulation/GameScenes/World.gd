@@ -10,6 +10,7 @@ onready var buildInterface = BuildInterface.instance()
 
 onready var iBuildingHUD = $BuildingHUD
 onready var iBuildingLayer = $Map/BuildingLayer
+onready var iLandLayer = $Map/Land
 onready var iPlayer = $Player
 
 onready var start_time = OS.get_ticks_msec()
@@ -29,6 +30,7 @@ var iGold setget set_gold, get_gold
 var buildMenu
 var aTownBuildingsProduction = []
 var aTownBuildingsUpkeep = []
+var timesteps = 0
 
 func _ready():
 	buildButton.set_position(Vector2(700, 600))
@@ -43,7 +45,8 @@ func _ready():
 func _process(delta):
 	# Every x amount of time (in seconds) let's progress timestep
 	if OS.get_ticks_msec() - offset_time >= nTimeStep:
-		print("Elapsed time: ", (OS.get_ticks_msec() - start_time) / 1000)
+		timesteps += 1
+		print("Elapsed time: ", (OS.get_ticks_msec() - start_time) / 1000, " Timesteps: ", timesteps)
 		self.offset_time = OS.get_ticks_msec()
 		
 		# Order matters, want production prior to upkeep to stop player going into negative incorrectly
@@ -94,6 +97,10 @@ func _on_build_pressed():
 	
 	for build_option in buildMenu.get_children():
 		build_option.connect("option_chosen", self, "_on_option_chosen")
+
+
+func get_player_tile():
+	return iLandLayer.get_cellv(iPlayer.get_grid_position())
 
 
 func _on_option_chosen(cost, production, upkeep, tile_type):

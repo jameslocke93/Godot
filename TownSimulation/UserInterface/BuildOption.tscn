@@ -14,41 +14,51 @@ __meta__ = {
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 200.0
-margin_bottom = 80.0
+margin_bottom = 152.0
 texture = ExtResource( 3 )
 stretch_mode = 1
 
-[node name="Bars" type="HBoxContainer" parent="."]
+[node name="Rows" type="VBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 152.0
+
+[node name="TopBars" type="HBoxContainer" parent="Rows"]
 margin_right = 200.0
 margin_bottom = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResourceCost" type="VBoxContainer" parent="Bars"]
+[node name="ResourceCost" type="VBoxContainer" parent="Rows/TopBars"]
 margin_right = 116.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 
-[node name="Gold" type="Label" parent="Bars/ResourceCost"]
+[node name="CostTitle" type="Label" parent="Rows/TopBars/ResourceCost"]
 margin_right = 116.0
-margin_bottom = 24.0
+margin_bottom = 14.0
+text = "Cost:"
+
+[node name="Gold" type="Label" parent="Rows/TopBars/ResourceCost"]
+margin_top = 18.0
+margin_right = 116.0
+margin_bottom = 36.0
 size_flags_vertical = 3
 text = "Gold: 10"
 align = 1
 valign = 1
 
-[node name="Wood" type="Label" parent="Bars/ResourceCost"]
-margin_top = 28.0
+[node name="Wood" type="Label" parent="Rows/TopBars/ResourceCost"]
+margin_top = 40.0
 margin_right = 116.0
-margin_bottom = 52.0
+margin_bottom = 58.0
 size_flags_vertical = 3
 text = "Wood: 10"
 align = 1
 valign = 1
 
-[node name="Food" type="Label" parent="Bars/ResourceCost"]
-margin_top = 56.0
+[node name="Food" type="Label" parent="Rows/TopBars/ResourceCost"]
+margin_top = 62.0
 margin_right = 116.0
 margin_bottom = 80.0
 size_flags_vertical = 3
@@ -56,8 +66,91 @@ text = "Food: 5"
 align = 1
 valign = 1
 
-[node name="Icon" type="TextureRect" parent="Bars"]
+[node name="Icon" type="TextureRect" parent="Rows/TopBars"]
 margin_left = 120.0
 margin_right = 200.0
 margin_bottom = 80.0
 texture = ExtResource( 2 )
+
+[node name="BottomBars" type="HBoxContainer" parent="Rows"]
+margin_top = 84.0
+margin_right = 200.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceUpkeep" type="VBoxContainer" parent="Rows/BottomBars"]
+margin_right = 98.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+
+[node name="UpkeepTitle" type="Label" parent="Rows/BottomBars/ResourceUpkeep"]
+margin_right = 98.0
+margin_bottom = 14.0
+text = "Upkeep:"
+
+[node name="Gold" type="Label" parent="Rows/BottomBars/ResourceUpkeep"]
+margin_top = 18.0
+margin_right = 98.0
+margin_bottom = 32.0
+size_flags_vertical = 3
+text = "Gold: 10"
+align = 1
+valign = 1
+
+[node name="Wood" type="Label" parent="Rows/BottomBars/ResourceUpkeep"]
+margin_top = 36.0
+margin_right = 98.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+text = "Wood: 10"
+align = 1
+valign = 1
+
+[node name="Food" type="Label" parent="Rows/BottomBars/ResourceUpkeep"]
+margin_top = 54.0
+margin_right = 98.0
+margin_bottom = 68.0
+size_flags_vertical = 3
+text = "Food: 5"
+align = 1
+valign = 1
+
+[node name="ResourceProduction" type="VBoxContainer" parent="Rows/BottomBars"]
+margin_left = 102.0
+margin_right = 200.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+
+[node name="ProductionTitle" type="Label" parent="Rows/BottomBars/ResourceProduction"]
+margin_right = 98.0
+margin_bottom = 14.0
+text = "Production: "
+
+[node name="Gold" type="Label" parent="Rows/BottomBars/ResourceProduction"]
+margin_top = 18.0
+margin_right = 98.0
+margin_bottom = 32.0
+size_flags_vertical = 3
+text = "Gold: 10"
+align = 1
+valign = 1
+
+[node name="Wood" type="Label" parent="Rows/BottomBars/ResourceProduction"]
+margin_top = 36.0
+margin_right = 98.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+text = "Wood: 10"
+align = 1
+valign = 1
+
+[node name="Food" type="Label" parent="Rows/BottomBars/ResourceProduction"]
+margin_top = 54.0
+margin_right = 98.0
+margin_bottom = 68.0
+size_flags_vertical = 3
+text = "Food: 5"
+align = 1
+valign = 1

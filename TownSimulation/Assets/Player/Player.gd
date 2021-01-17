@@ -13,6 +13,7 @@ func _process(delta):
 			self.player_grid_position = mouse_to_map_position
 
 
+# TODO: Can change this function to interact with get_player_tile in world
 func check_world_tile(destination):
 	var world = get_tree().current_scene
 	var world_map = world.find_node("Map")
